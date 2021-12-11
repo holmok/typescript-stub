@@ -1,0 +1,48 @@
+{
+  "name": "typescript-stub",
+  "description": "A stub for a typescript project",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holmok/typescript-stub"
+  },
+  "keywords": [
+    "node.js",
+    "typescript",
+    "stub"
+  ],
+  "author": "christopher holmok <christopher@holmok.com>",
+  "homepage": "https://github.com/holmok/typescript-stub#readme",
+  "bugs": {
+    "url": "https://github.com/holmok/typescript-stubr/issues"
+  },
+  "devDependencies": {
+    "@randomgoods/tap-spec": "^5.0.1",
+    "@types/node": "^16.11.12",
+    "@types/sinon": "^10.0.6",
+    "@types/tape": "^4.13.2",
+    "@typescript-eslint/parser": "^4.0.0",
+    "eslint": "^7.0.0",
+    "istanbul-lib-processinfo": "https://github.com/darkmatter18/istanbul-lib-processinfo#update-to-latest",
+    "nyc": "^15.1.0",
+    "sinon": "^12.0.1",
+    "tape": "^5.3.2",
+    "ts-node": "^10.4.0",
+    "ts-standard": "^11.0.0",
+    "typescript": ">=3.3.1 <4.5.0"
+  },
+  "scripts": {
+    "test": "yarn lint && yarn nyc",
+    "tape": "tape --jobs=4 --require ts-node/register ./tests/**/*.test.ts | tap-spec",
+    "nyc": "nyc --reporter=text --reporter=text-summary --reporter=html yarn run tape",
+    "postnyc": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "start": "NODE_ENV=production node dist/index.js",
+    "dev": "NODE_ENV=development nodemon | pino-tiny",
+    "clean": "rm -rf dist/",
+    "lint": "ts-standard src/**/*.ts --fix",
+    "compile": "tsc -d",
+    "build": "yarn test && yarn clean && yarn compile"
+  }
+}
