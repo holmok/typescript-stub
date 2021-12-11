@@ -2,7 +2,7 @@
 
 This is just a stub for a TypeScript Node.js Project.
 
-* ts-node for dev
+* ts-node/nodemon for dev
 * ts-standard for linting
 * tape, tap-spec and sinon for testing
 * yarn over npm
